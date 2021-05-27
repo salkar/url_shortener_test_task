@@ -35,6 +35,29 @@ CREATE TABLE public.schema_migrations (
 
 
 --
+-- Name: url_id_base_sequence; Type: SEQUENCE; Schema: public; Owner: -
+--
+
+CREATE SEQUENCE public.url_id_base_sequence
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+--
+-- Name: urls; Type: TABLE; Schema: public; Owner: -
+--
+
+CREATE TABLE public.urls (
+    slug text NOT NULL,
+    url text NOT NULL,
+    open_count integer DEFAULT 0 NOT NULL
+);
+
+
+--
 -- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
@@ -51,10 +74,21 @@ ALTER TABLE ONLY public.schema_migrations
 
 
 --
+-- Name: urls urls_pkey; Type: CONSTRAINT; Schema: public; Owner: -
+--
+
+ALTER TABLE ONLY public.urls
+    ADD CONSTRAINT urls_pkey PRIMARY KEY (slug);
+
+
+--
 -- PostgreSQL database dump complete
 --
 
 SET search_path TO "$user", public;
 
+INSERT INTO "schema_migrations" (version) VALUES
+('20210527130833'),
+('20210527160133');
 
 

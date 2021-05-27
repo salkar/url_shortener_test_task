@@ -245,3 +245,6 @@ Rails/RakeEnvironment:
   Enabled: true
   Exclude:
     - lib/capistrano/**/*
+
+Rails/CreateTableWithTimestamps:
+  Enabled: false
